@@ -6,11 +6,9 @@ to make this project working in your computer
 git pull origin master
 
 <br/>
-2-
-you have to add **Ecommercial** database to your MySQL server
+2-you have to add **Ecommercial** database to your MySQL server
 <br/>
-3-
-you have to update your Ecommercial\src\mine\resources\application.properties to
+3-you have to update your Ecommercial\src\mine\resources\application.properties to
 <code>
 spring.jpa.hibernate.ddl-auto=update
 spring.datasource.url=jdbc:mysql://localhost/Ecommercial?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Moscow&createDatabaseIfNotExist=true

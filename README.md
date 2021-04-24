@@ -7,7 +7,7 @@ git pull origin master
 
 
 2-
-you have to add Ecommercial database to your MySQL server
+you have to add **Ecommercial** database to your MySQL server
 
 3-
 you have to update your Ecommercial\src\mine\resources\application.properties to
@@ -17,6 +17,6 @@ spring.datasource.url=jdbc:mysql://localhost/Ecommercial?useJDBCCompliantTimezon
 spring.datasource.username=root
 spring.datasource.password=Sabry1998
 
-as spring.datasource.username is your database user<br/>
-as spring.datasource.password is your database user password
+as **spring.datasource.username** is your database user<br/>
+as **spring.datasource.password** is your database user password
 

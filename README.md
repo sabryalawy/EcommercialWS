@@ -14,3 +14,4 @@ and spring.datasource.password is your database user password
 
 
 2-
+you have to add Ecommercial database to your MySQL server

@@ -17,6 +17,6 @@ spring.datasource.url=jdbc:mysql://localhost/Ecommercial?useJDBCCompliantTimezon
 spring.datasource.username=root
 spring.datasource.password=Sabry1998
 
-as spring.datasource.username is your database user
+as spring.datasource.username is your database user<br/>
 as spring.datasource.password is your database user password
 

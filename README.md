@@ -18,5 +18,5 @@ spring.datasource.username=root
 spring.datasource.password=Sabry1998
 
 as spring.datasource.username is your database user
-and spring.datasource.password is your database user password
+as spring.datasource.password is your database user password
 

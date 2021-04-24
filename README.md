@@ -12,6 +12,10 @@ spring.datasource.password=Sabry1998
 as spring.datasource.username is your database user
 and spring.datasource.password is your database user password
 
+or you can make pull requset
+git pull origin master
+
+
 
 2-
 you have to add Ecommercial database to your MySQL server

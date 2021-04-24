@@ -7,7 +7,7 @@ git pull origin master
 
 <br/>
 2-you have to add **Ecommercial** database to your MySQL server
-<br/>
+<br/><br/>
 3-you have to update your Ecommercial\src\mine\resources\application.properties to
 <code>
 spring.jpa.hibernate.ddl-auto=update

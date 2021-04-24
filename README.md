@@ -1,7 +1,15 @@
 # EcommercialWS
 to make this project working in your computer 
 
-1-
+
+1-make pull requset
+git pull origin master
+
+
+2-
+you have to add Ecommercial database to your MySQL server
+
+3-
 you have to update your Ecommercial\src\mine\resources\application.properties to
 
 spring.jpa.hibernate.ddl-auto=update
@@ -12,10 +20,3 @@ spring.datasource.password=Sabry1998
 as spring.datasource.username is your database user
 and spring.datasource.password is your database user password
 
-or you can make pull requset
-git pull origin master
-
-
-
-2-
-you have to add Ecommercial database to your MySQL server

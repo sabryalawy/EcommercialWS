@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class CustomerUIController {
 
 
-    @RequestMapping("/customerui")
+    @RequestMapping("/login")
     public String customerUI(){
         return "home";
     }

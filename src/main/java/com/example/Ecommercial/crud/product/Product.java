@@ -1,18 +1,26 @@
 package com.example.Ecommercial.crud.product;
 
+import com.example.Ecommercial.crud.warehouse.WtoP.WareHouseToProduct;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Product {
     @Id
     @GeneratedValue
     int id;
+
     String name;
     String brand;
     String serial;
     boolean isDeleted;
+
+    @OneToMany(mappedBy = "product")
+    List<WareHouseToProduct> wareHouseToProduct;
 
     public Product() {
     }

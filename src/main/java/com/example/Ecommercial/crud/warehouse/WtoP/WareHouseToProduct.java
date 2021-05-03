@@ -2,26 +2,54 @@ package com.example.Ecommercial.crud.warehouse.WtoP;
 
 import com.example.Ecommercial.crud.product.Product;
 import com.example.Ecommercial.crud.warehouse.WareHouse;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class WareHouseToProduct {
     @Id
+    @GeneratedValue
     int id;
 
     int qantity;
 
-    @ManyToOne
-    WareHouse wareHouse;
 
-    @ManyToOne
-    Product product;
+    int wareHouse;
+
+
+    int product;
+
+    boolean isDeleted;
 
     public WareHouseToProduct() {
+    }
+
+    public WareHouseToProduct(int wareHouse, int product) {
+        this.wareHouse = wareHouse;
+        this.product = product;
+    }
+
+    public WareHouseToProduct(int qantity, int wareHouse, int product) {
+        this.qantity = qantity;
+        this.wareHouse = wareHouse;
+        this.product = product;
+    }
+
+    public WareHouseToProduct(int id, int qantity, int wareHouse, int product) {
+        this.id = id;
+        this.qantity = qantity;
+        this.wareHouse = wareHouse;
+        this.product = product;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     public int getId() {
@@ -32,19 +60,19 @@ public class WareHouseToProduct {
         this.id = id;
     }
 
-    public WareHouse getWareHouse() {
+    public int getWareHouse() {
         return wareHouse;
     }
 
-    public void setWareHouse(WareHouse wareHouse) {
+    public void setWareHouse(int wareHouse) {
         this.wareHouse = wareHouse;
     }
 
-    public Product getProduct() {
+    public int getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(int product) {
         this.product = product;
     }
 

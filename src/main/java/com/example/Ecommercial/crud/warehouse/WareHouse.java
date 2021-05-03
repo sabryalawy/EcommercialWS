@@ -1,6 +1,8 @@
 package com.example.Ecommercial.crud.warehouse;
 
 import com.example.Ecommercial.crud.warehouse.WtoP.WareHouseToProduct;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 
 import javax.persistence.Entity;
@@ -26,9 +28,6 @@ public class WareHouse {
     @Expose
     boolean isDeleted;
 
-    @OneToMany(mappedBy = "wareHouse")
-    List<WareHouseToProduct> wareHouseToProduct;
-
     public WareHouse() {
     }
 
@@ -46,7 +45,7 @@ public class WareHouse {
         this.city = city;
         this.phoneNO = phoneNO;
         this.capacity = capacity;
-        this.wareHouseToProduct = wareHouseToProduct;
+
     }
 
     public WareHouse(int id, String address, String city, String phoneNO, double capacity, boolean isDeleted, List<WareHouseToProduct> wareHouseToProduct) {
@@ -56,8 +55,9 @@ public class WareHouse {
         this.phoneNO = phoneNO;
         this.capacity = capacity;
         this.isDeleted = isDeleted;
-        this.wareHouseToProduct = wareHouseToProduct;
+
     }
+
 
     public boolean isDeleted() {
         return isDeleted;
@@ -65,14 +65,6 @@ public class WareHouse {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
-    }
-
-    public List<WareHouseToProduct> getWareHouseToProduct() {
-        return wareHouseToProduct;
-    }
-
-    public void setWareHouseToProduct(List<WareHouseToProduct> wareHouseToProduct) {
-        this.wareHouseToProduct = wareHouseToProduct;
     }
 
     public int getId() {

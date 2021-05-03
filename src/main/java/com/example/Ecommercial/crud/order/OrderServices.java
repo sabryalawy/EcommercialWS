@@ -33,6 +33,7 @@ public class OrderServices {
             order.setDate(LocalDateTime.now());
             double tootalprice=0;
             for (Product i:order.getProducts()){
+                i=products.findById(i.getId()).get();
                 tootalprice+=i.getPrice();
             }
             order.setTotalPrice(tootalprice);

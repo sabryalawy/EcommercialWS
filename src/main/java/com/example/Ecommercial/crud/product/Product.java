@@ -1,15 +1,9 @@
 package com.example.Ecommercial.crud.product;
 
-import com.example.Ecommercial.crud.warehouse.WtoP.WareHouseToProduct;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.List;
 
 @Entity
 public class Product {
@@ -25,8 +19,18 @@ public class Product {
     String serial;
     @Expose
     boolean isDeleted;
+    @Expose
+    double price;
 
     public Product() {
+    }
+
+    public Product(String name, String brand, String serial, boolean isDeleted, double price) {
+        this.name = name;
+        this.brand = brand;
+        this.serial = serial;
+        this.isDeleted = isDeleted;
+        this.price = price;
     }
 
     public Product(int id, String name, String brand, String serial) {
@@ -51,6 +55,13 @@ public class Product {
         this.isDeleted = isDeleted;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public boolean isDeleted() {
         return isDeleted;

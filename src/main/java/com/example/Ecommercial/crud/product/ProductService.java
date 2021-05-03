@@ -7,7 +7,6 @@ import com.example.Ecommercial.crud.warehouse.WtoP.WareHouseToProuductRepo;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +69,7 @@ public class ProductService {
 
     @RequestMapping("/product/warehouse/{pid}")
     public String getProductFromAWarehouse(@PathVariable int pid){
+
         return new Gson().toJson(wPR.findByProduct(pid));
     }
 

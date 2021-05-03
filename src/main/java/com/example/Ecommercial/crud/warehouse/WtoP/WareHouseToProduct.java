@@ -1,9 +1,5 @@
 package com.example.Ecommercial.crud.warehouse.WtoP;
 
-import com.example.Ecommercial.crud.product.Product;
-import com.example.Ecommercial.crud.warehouse.WareHouse;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 

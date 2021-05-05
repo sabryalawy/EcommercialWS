@@ -76,7 +76,29 @@ public class WareHouseServices {
         return new Gson().toJson(wPR.findBywareHouse(wid));
     }
 
+    @RequestMapping("/warehouse/{wid}")
+    public String getWarehousById(@PathVariable int wid){
+        return new Gson().toJson(warehouses.findById(wid));
+    }
+
     //still need get by id
     //still need softdeleted
+    @RequestMapping(method = RequestMethod.DELETE,value = "/warehouse/{wid}")
+    public String setWarehousDeleted(@PathVariable int wid){
+        WareHouse wearhose = warehouses.findById(wid).get();
+        wearhose.setDeleted(true);
+        warehouses.save(wearhose);
+
+        return new Gson().toJson(warehouses.findById(wid) + "Soft Deleted");
+    }
+    //still need update
+//    @RequestMapping(method = RequestMethod.PUT,value = "/warehouse/{wid}")
+//    public String setUpdate(@PathVariable int wid ,@RequestBody WareHouse temp){
+//        WareHouse wear =   temp;
+//        wear.setId(wid);
+//     warehouses.save(wear);
+//        return new Gson().toJson(wear) +"";
+//
+//    }
     //still need update
 }

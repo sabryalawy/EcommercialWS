@@ -50,7 +50,7 @@ public class ProductService {
 
 
 
-    @RequestMapping(method = RequestMethod.POST,value = "/product/addtowarehouse/{wHId}/{pId}/{quant}")
+    @RequestMapping(method = RequestMethod.PUT,value = "/product/addtowarehouse/{wHId}/{pId}/{quant}")
     public String addToWareHouse(@PathVariable int wHId, @PathVariable int pId, @PathVariable int quant){
         try {
             Product tempP=products.findById(pId).get();

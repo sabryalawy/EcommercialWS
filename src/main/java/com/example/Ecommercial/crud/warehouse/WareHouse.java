@@ -106,4 +106,5 @@ public class WareHouse {
     public void setCapacity(double capacity) {
         this.capacity = capacity;
     }
+
 }

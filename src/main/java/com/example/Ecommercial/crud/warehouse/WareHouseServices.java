@@ -76,6 +76,11 @@ public class WareHouseServices {
         return new Gson().toJson(wPR.findBywareHouse(wid));
     }
 
+    @RequestMapping("/warehouse/{wid}")
+    public String getWarehousById(@PathVariable int wid){
+        return new Gson().toJson(warehouses.findById(wid));
+    }
+
     //still need get by id
     //still need softdeleted
     //still need update

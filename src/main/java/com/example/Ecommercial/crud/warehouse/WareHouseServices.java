@@ -78,7 +78,7 @@ public class WareHouseServices {
 
     @RequestMapping("/warehouse/{wid}")
     public String getWarehousById(@PathVariable int wid){
-        return new Gson().toJson(warehouses.findById(wid));
+        return new Gson().toJson(warehouses.findById(wid).get());
     }
 
     //still need get by id

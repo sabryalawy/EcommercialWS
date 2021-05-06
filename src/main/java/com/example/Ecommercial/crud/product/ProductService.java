@@ -73,7 +73,73 @@ public class ProductService {
         return new Gson().toJson(wPR.findByProduct(pid));
     }
 
-    //still need get by id
-//still need softdeleted
-//still need update
+
+    //get by id for the product
+    @RequestMapping(method = RequestMethod.GET,value = "/product/{pId}")
+    public String getProduct(@PathVariable int pId){
+        try {
+            Product tempP=products.findById(pId).get();
+            if (tempP!=null){
+                System.out.println(pId);
+                return new Gson().toJson(tempP);
+            }
+            return "please make sure of the IDs";
+        }catch (Exception e){
+            return "please make sure of the IDs";
+
+        }
+
+    }
+
+    //softdeleted for the product
+    @RequestMapping(method = RequestMethod.DELETE,value = "/product/{pId}")
+    public String deleteProduct(@PathVariable int pId){
+        try {
+            Product tempP=products.findById(pId).get();
+            if (tempP!=null){
+                tempP.isDeleted=true;
+                products.save(tempP);
+                return "Done";
+            }
+            return "please make sure of the IDs";
+        }catch (Exception e){
+            return "please make sure of the IDs";
+
+        }
+
+    }
+    //update
+    @RequestMapping(method = RequestMethod.PUT,value = "/product/{pId}")
+    public String updateProduct(@PathVariable int pId,@RequestBody Product updateInfo){
+        try {
+            Product tempP=products.findById(pId).get();
+
+            if (tempP!=null){
+                if(updateInfo.name!=null) {
+                    tempP.name = updateInfo.name;
+                    tempP.brand = tempP.brand;
+                    tempP.price = tempP.price;
+                }
+                if(updateInfo.price!=0) {
+                    tempP.name = tempP.name;
+                    tempP.brand = tempP.brand;
+                    tempP.price = updateInfo.price;
+                }
+                if(updateInfo.brand!=null) {
+                    tempP.name = tempP.name;
+                    tempP.brand = updateInfo.brand;
+                    tempP.price = tempP.price;
+                }
+
+                products.save(tempP);
+                return "Done";
+            }
+            return "please make sure of the IDs";
+        }catch (Exception e){
+            return "please make sure of the IDs";
+
+        }
+
+    }
+
 }

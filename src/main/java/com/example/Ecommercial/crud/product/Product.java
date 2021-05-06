@@ -102,6 +102,4 @@ public class Product {
     public void setSerial(String serial) {
         this.serial = serial;
     }
-
-
 }

@@ -29,7 +29,7 @@ public class WareHouseServices {
     public String addWareHouse(@RequestBody WareHouse wareHouse){
         try{
             warehouses.save(wareHouse);
-            return wareHouse+" has been added";
+            return new  Gson().toJson(wareHouse)+" has been added";
         }catch (Exception e){
             return "somthing went wrong";
         }
@@ -83,5 +83,33 @@ public class WareHouseServices {
 
     //still need get by id
     //still need softdeleted
+    @RequestMapping(method = RequestMethod.DELETE,value = "/warehouse/{wid}")
+    public String setWarehousDeleted(@PathVariable int wid){
+        WareHouse wearhose = warehouses.findById(wid).get();
+        wearhose.setDeleted(true);
+        warehouses.save(wearhose);
+
+        return new Gson().toJson(warehouses.findById(wid) + "Soft Deleted");
+    }
+    @RequestMapping(method = RequestMethod.PUT,value = "/warehouse/{wid}")
+    public String setUpdate(@PathVariable int wid ,@RequestBody WareHouse temp){
+        WareHouse wear = warehouses.findById(wid).get();
+if(temp.getAddress()!=null && !temp.getAddress().isEmpty())
+{
+    wear.setAddress(temp.getAddress());
+
+}
+       if(temp.getCity()!=null && !temp.getCity().isEmpty() )
+           wear.setCity(temp.getCity());
+       if(temp.getPhoneNO()!=null && !temp.getPhoneNO().isEmpty())
+           wear.setPhoneNO(temp.getPhoneNO());
+       if(temp.isDeleted()==true)
+           wear.setDeleted(true);
+       if(temp.getCapacity()!=0)
+           wear.setCapacity(temp.getCapacity());
+     warehouses.save(wear);
+        return new Gson().toJson(wear) +"";
+
+    }
     //still need update
 }

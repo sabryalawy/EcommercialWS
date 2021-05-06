@@ -73,6 +73,7 @@ public class ProductService {
         return new Gson().toJson(wPR.findByProduct(pid));
     }
 
+
     //get by id for the product
     @RequestMapping(method = RequestMethod.GET,value = "/product/{pId}")
     public String getProduct(@PathVariable int pId){
@@ -140,4 +141,5 @@ public class ProductService {
         }
 
     }
+
 }

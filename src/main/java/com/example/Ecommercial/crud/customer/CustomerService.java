@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -15,8 +16,10 @@ public class CustomerService {
     CustomerRepo customers;
 
     @RequestMapping(method = RequestMethod.POST, value = "/customer")
-    public String addCustomer(@RequestBody Customer customer){
-        customers.save(customer);
+    public String addCustomer(@RequestParam Map<String,String> customer){
+        Gson g= new Gson();
+        Customer customerz=g.fromJson((String) customer.keySet().toArray()[0],Customer.class);
+        customers.save(customerz);
         return customer+" has been added";
     }
 

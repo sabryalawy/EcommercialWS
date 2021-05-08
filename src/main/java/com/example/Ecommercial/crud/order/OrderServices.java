@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class OrderServices {
@@ -29,7 +30,9 @@ public class OrderServices {
     CustomerRepo customers;
 
     @RequestMapping(method = RequestMethod.POST,value = "/order")
-    public String addOrder(@RequestBody Order order){
+    public String addOrder(@RequestParam Map<String, String> orderss){
+        Gson g= new Gson();
+        Order order=g.fromJson((String) orderss.keySet().toArray()[0],Order.class);
             order.setDate(LocalDateTime.now());
             double tootalprice=0;
             for (Product i:order.getProducts()){
@@ -38,7 +41,7 @@ public class OrderServices {
             }
             order.setTotalPrice(tootalprice);
             orders.save(order);
-            return "done";
+            return "Done!";
     }
 
     @RequestMapping("order")

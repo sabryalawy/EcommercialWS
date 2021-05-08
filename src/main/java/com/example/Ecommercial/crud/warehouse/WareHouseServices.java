@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class WareHouseServices {
@@ -26,8 +27,10 @@ public class WareHouseServices {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/warehouse")
-    public String addWareHouse(@RequestBody WareHouse wareHouse){
+    public String addWareHouse(@RequestParam Map<String,String> wareHousez){
         try{
+            Gson g= new Gson();
+            WareHouse wareHouse =g.fromJson((String) wareHousez.keySet().toArray()[0],WareHouse.class);
             warehouses.save(wareHouse);
             return new  Gson().toJson(wareHouse)+" has been added";
         }catch (Exception e){
@@ -54,7 +57,7 @@ public class WareHouseServices {
 
 
 
-    @RequestMapping(method = RequestMethod.PUT,value = "/warehouse/addtowarehouse/{wHId}/{pId}/{quant}")
+    @RequestMapping(method = RequestMethod.POST,value = "/warehouse/addtowarehouse/{wHId}/{pId}/{quant}")
     public String addToWareHouse(@PathVariable int wHId, @PathVariable int pId, @PathVariable int quant){
         try {
             Product tempP=products.findById(pId).get();
@@ -73,7 +76,14 @@ public class WareHouseServices {
 
     @RequestMapping("/warehouse/products/{wid}")
     public String getTheInSideTheWarehouse(@PathVariable int wid){
-        return new Gson().toJson(wPR.findBywareHouse(wid));
+        List<Product> rez= new ArrayList<>();
+        List<WareHouseToProduct> respond = new ArrayList<>();
+        respond=wPR.findBywareHouse(wid);
+        for (WareHouseToProduct wp : respond) {
+            Product temp = products.findById(wp.getProduct()).get();
+            rez.add(temp);
+        }
+        return new Gson().toJson(rez);
     }
 
     @RequestMapping("/warehouse/{wid}")

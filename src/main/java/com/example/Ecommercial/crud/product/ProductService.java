@@ -1,5 +1,6 @@
 package com.example.Ecommercial.crud.product;
 
+import com.example.Ecommercial.crud.customer.Customer;
 import com.example.Ecommercial.crud.warehouse.WareHouse;
 import com.example.Ecommercial.crud.warehouse.WareHouseRepo;
 import com.example.Ecommercial.crud.warehouse.WtoP.WareHouseToProduct;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ProductService {
@@ -22,8 +24,11 @@ public class ProductService {
     WareHouseRepo wareHouses;
 
     @RequestMapping(method = RequestMethod.POST,value = "/product")
-    public String addProduct(@RequestBody Product product){
+    public String addProduct(@RequestParam Map<String,String> productz){
+
         try{
+            Gson g=new Gson();
+            Product product=g.fromJson((String) productz.keySet().toArray()[0],Product.class);
             products.save(product);
 
             return new Gson().toJson(product)+" has been added";
@@ -42,7 +47,8 @@ public class ProductService {
                     rez.add(p);
                 }
             }
-            return new Gson().toJson(rez);
+            Gson g= new Gson();
+            return g.toJson(rez);
         }catch (Exception e){
             return "somtheing error please return";
         }
